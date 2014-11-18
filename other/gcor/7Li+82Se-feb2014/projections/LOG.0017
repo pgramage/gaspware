@@ -1,0 +1,121 @@
+
+ ***************************************************************************
+
+ 14-Feb-14  20:07:36
+ Sort of data from  RUN#0017
+ According to the following instructions
+       Event format (GASP style)
+   0  HEADER    F         1  8192
+   1  DETECTOR  G  14     2  8192  4096
+   2  DETECTOR  L  11     2  8192  8192 PLUS   1  8192
+   3  DETECTOR  A  11     PLUS   2  8192  8192
+ 
+  HGATE   H0  on  G    1  value(s) defined
+ 
+         List of the analysis program
+ 
+   1  RECAL         G0 E-HPGe-152Eu.cal  NORUN        0.00      2.0000    10  8192  [ 0 13 ]
+   2  RECAL         G1 Cal/Ge-TDC.cal  NORUN     1000.00      0.5000    10  4000  [ 0 14 ]
+   3  RECAL         G1 TSHIFTS.cal  NORUN        0.00      1.0000    10  4000  [ 0 14 ]
+   4  RECAL         L0 Cal/gMatch_pint_L-152Eu.cal  NORUN        0.00      1.0000    10  8000  [ 0 11 ]
+   5  RECAL_MULT    L0 Cal/pint_L-152Eu.mcal  NORUN        0.00      1.0000    10  8000  [ 0 11 ]
+   6  RECAL         L1 Cal/L-Time10ps.cal  NORUN     2000.00      1.0000    10  8000  [ 0 11 ]
+   7  RECAL         L1 Cal/L-TimeShifts1.cal  NORUN        0.00      1.0000    10  8000  [ 0 11 ]
+   8  RECAL         L1 Cal/L-TimeShifts2.cal  NORUN        0.00      1.0000    10  8000  [ 0 11 ]
+   9  PROJECTIONS   F  G0 G1  L0 L1 L2  A0 A1
+ 
+ 
+     ......HG........................RUN0017...| Header( 1 param ) | 
+     DetType  1 (14 det ,  2 param ) | DetType  2 (11 det ,  2 param 
+     ) | ............................................................
+     ................................................................
+
+ ***************************************************************************
+
+ 14-Feb-14  20:07:36    SORT  starts now
+
+          16715   Records read from  file   Run017
+    11403305   Analysed events
+     1130118223   1D increments
+              0   2D increments
+              0   3D increments
+              0   4D increments
+ 14-Feb-14  20:07:53    SORT  completed
+  G-Statistics    RAW
+   G fold  1    8192486
+   G fold  2     786810
+   G fold  3     248357
+   G fold  4      11039
+   G fold  5        346
+   G fold  6         12
+   G Total     9239050
+  L-Statistics    RAW
+   L fold  1    1747915
+   L fold  2    7832229
+   L fold  3     697941
+   L fold  4      47965
+   L fold  5       2708
+   L fold  6        189
+   L fold  7         27
+   L fold  8         14
+   L fold  9         12
+   L fold 10          6
+   L fold 11          1
+   L Total    10329007
+  A-Statistics    RAW
+ F#000        5114006 Counts
+ F.0017        5114006           Counts
+ G0#000         621159 Counts
+ G0#001         903730 Counts
+ G0#002         694390 Counts
+ G0#003         670151 Counts
+ G0#004         685691 Counts
+ G0#005        1043855 Counts
+ G0#006         647130 Counts
+ G0#007         603459 Counts
+ G0#008         529791 Counts
+ G0#009         628775 Counts
+ G0#010         623844 Counts
+ G0#011         866887 Counts
+ G0#012         634374 Counts
+ G0#013        1339536 Counts
+ G0.0017       10492772           Counts
+ G1#000         621159 Counts
+ G1#001         903730 Counts
+ G1#002         694390 Counts
+ G1#003         670151 Counts
+ G1#004         685691 Counts
+ G1#005        1043855 Counts
+ G1#006         647130 Counts
+ G1#007         603459 Counts
+ G1#008         529791 Counts
+ G1#009         628775 Counts
+ G1#010         623844 Counts
+ G1#011         866887 Counts
+ G1#012         634374 Counts
+ G1#013        1339536 Counts
+ G1.0017       10492772           Counts
+ L0#000        1907518 Counts
+ L0#001        1886374 Counts
+ L0#002        2429781 Counts
+ L0#003        1156796 Counts
+ L0#004        2484981 Counts
+ L0#005        1186060 Counts
+ L0#006         815246 Counts
+ L0#007        2231452 Counts
+ L0#008        2114534 Counts
+ L0#009        1117761 Counts
+ L0#010        2382562 Counts
+ L0.0017       19713065           Counts
+ L1#000        1907518 Counts
+ L1#001        1886374 Counts
+ L1#002        2429781 Counts
+ L1#003        1156796 Counts
+ L1#004        2484981 Counts
+ L1#005        1186060 Counts
+ L1#006         815246 Counts
+ L1#007        2231452 Counts
+ L1#008        2114534 Counts
+ L1#009        1117761 Counts
+ L1#010        2382562 Counts
+ L1.0017       19713065           Counts

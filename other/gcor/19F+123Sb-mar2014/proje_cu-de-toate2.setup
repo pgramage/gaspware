@@ -1,0 +1,117 @@
+format GASP
+
+header  F 1 8192
+detector    G   14   2  8192 4096
+detector    L  11    2  8192 8192 PLUS  2 8192 8192
+*detector    A   1     PLUS 2  8192 8192
+pairdef Pairs
+*Kill G 1
+
+*0 gate on 741 keV
+hgatedef G0 1
+  1477  1485
+
+
+*1 gate on 521 keV
+hgatedef G0 1
+  1039  1044
+
+
+
+*recal G0  Cal/GeE.cal        0.00 2.00 10 8192 0 14
+recal G0  Cal/GeE-afterA2.cal        0.00 2.00 10 8192 0 14
+recal G1  Cal/Ge-TDC.cal  1000.00 0.50 10 4000 0 14
+recal G1  TSHIFTS.cal        0.00 1.00 10 4000 0 14
+
+************RL
+recal       L0   Cal/gMatch_pint_L-152Eu    NORUN     0.00  1.00  10 8000 0 11
+recal_mult  L0   Cal/pint_L-152Eu           NORUN     0.00  1.00  10 8000 0 11
+recal       L0   Cal/gcor_19F+123Sb_mar2014-R36    RUN     0.00  1.00  10 8000 0 11
+*************
+*proje
+************NM
+copy L0 L3
+recal       L1   Cal/TAC-10ps-Feb2014       NORUN     0.00  1.00  10 8000 0 11
+copy L3 L2
+recal       L2   Cal/L-WalkCorr0                      0.00  1.00  10 2000 0 11
+add  L1 L2 L1 Fact 1.00 -1.00 Off 1000
+gate L1 10 8000 IN 0 11
+************
+
+
+
+************** Plunger Pairs
+*mean G1 F0
+*add G1 F0 G1 Fact 1.00 -1.00 Off 1000
+**banana G0 G1 Ge-ET-fara-A4.ban Res 8192 2048 IN 2 14 
+*banana G0 G1 Ge-ET-cu-A4.ban Res 8192 2048 IN 2 14 
+*sort3d_pair G0 G0 P0 Ge-pairs-394um Res 4096 4096 96 STEP 128 128 4
+*sort2d_symm G0 Ge-symm-activ Res 8192
+**************
+
+
+*************Coincidence between Ge and LaBr3
+*gate L1 100 4050 IN 1 11
+banana G0 G1 Ge-ET-L Res 8192 4096 IN 1 14
+*sort3d Gi G0 G1 iGe-ET-L Res 16 8192 4096 Step 4 128 128
+**************
+
+
+
+*************Time differences
+*sort3d_diff L0 L0 L1 1000 L-L-dT Res 2048 2048 2048
+sort3d_diff L0 L0 L1 1000 L-L-dT-g521 Res 2048 2048 2048 H1 1
+*************
+
+
+
+
+**************LaBr symm
+mean L1 F0
+add L1 F0 L1 Fact 1.000 -1.000 Off 2000
+gate L1 10 8000 IN 2 11
+banana L0 L1 L-ET.ban Res 8192 2048 IN 2 11
+*sort3d Li L0 L1 iL-ET Res 16 8192 4096 Step 4 128 128
+sort2d_symm L0 LaBr-symm-g521 Res 4096 H1 1 
+*************
+
+
+
+
+
+
+*proje
+*gate G1 1125 1600 IN 1 14
+*sort2d Gi G0 iGe-150Gd Res 16 4096 Step 4 128 
+*banana G0 G1 ET.ban Res 8192 2048 IN 2 14
+*sort2d Gi G0 iGe-E  Res 16 4096 Step 4 128 
+*sort3d Gi G0 G1 iGe-ET-A4 Res 16 8192 2048  STEP 4 128 128
+
+*stati
+
+*proje
+
+*recal L0  Cal/L-152Eu       0.00 1.00 10 4096 0 11
+*recal L1 Cal/L-Time10ps   300.00 0.50 20 7500 0 11
+*recal L1 Cal/L-Tshift       0.00 1.00 20 7500 0 11
+*time_reference G1 2000 0
+*move L 0  A 0
+*time_reference A1 2000 0
+
+*copy L0 L2
+*recal L2 Cal/WalkCorr      0.00 1.00  100 2000 0 11
+*add  L1 L2 L1 Fact 1.00 -1.00 Off 2000
+*gate L1 10 4080 IN 0 11
+
+*gate G1 100 3700 IN 1 8
+*gate L1 100 7800 IN 0 11
+
+*proje
+*sort3d_pair G0 G0 P0 Ge-pairs-R1-101 Res 4096 4096 96 STEP 128 128 4
+*gate A0 1590 1700 IN 1 1
+
+*sort2d_symm G0 Ge-symm-10um Res 8192
+*sort2d_symm L0 L-symm-Run06 Res 4096
+*sort3d Li L0 L1 iLa-E-T Res 16 8192 4096 Step 2 128 128
+*sort2d Gi G1 iGe-T-11 Res 16 2048 Step 4 128
+*sort2d G0 G1 Ge-ET Res 4096 4096 Step 128 128

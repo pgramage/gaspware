@@ -1,0 +1,11 @@
+Channels=8192
+DetNum=3
+RefFile=L0.0001
+EndFile=L0.0129
+minWIDTH=100
+maxWIDTH=140
+SHIFT=130
+SWEEP=100
+Degree=1
+Low-Limit=50
+High-Limit=1000

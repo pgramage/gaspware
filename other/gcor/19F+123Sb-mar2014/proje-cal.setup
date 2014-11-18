@@ -1,0 +1,87 @@
+format GASP
+
+header      F   1      8192
+detector    G  14   2  8192 4096
+detector    L  11   2  8192 8192
+*detector    A  11     PLUS 2  8192 8192
+
+*proje
+
+pairdef Pairs
+*Kill G 1
+*recal G0  GeE_4_th_det_added.cal  0.00 2.00 10 8192 0 14
+*recal G0 Cal/GeE.cal  0.00 2.00 10 8192 0 14
+*recal G0  E-HPGe-152Eu.cal  0.00 2.00 10 8192 0 13
+
+recal G0  Cal/Ge-E-3rd   0.00 1.00 10 8192 0 13
+*recal G1 Cal/Ge-Tshift   0.00 1.00 10 4000 0 14
+recal G1 Cal/Ge-TDC.cal     1000.00 0.50 10 4000 0 14
+recal G1 TSHIFTS.cal           0.00 1.00 10 4000 0 14
+
+*proje
+*recal_mult  L0   Cal/pint_L-152Eu        NORUN     0.00  1.00  10 8000 0 11
+
+
+recal L0          L511.cal                     0.00  1.00  10 8000 2 11
+*recal       L1   Cal/L-Time10ps   	     2000.00  1.00  10 8000 0 11
+*recal       L1   Cal/L-TimeShifts             0.00 1.00 10 8000 0 11
+
+*stati
+*fold G 2 14
+*time_reference G1 2000 0
+*proje
+gate G1 100 4000 IN 2 14
+mean G1 F0
+add G1 F0 G1 Fact 1.00 -1.00 Off 1000
+
+
+*sort3d Gi G0 G1 iGe-ET-run3 Res 16 8192 2048 Step 4 128 128
+
+*banana G0 G1 ET.ban Res 8192 2048 IN 2 14
+*sort2d_symm G0 Ge-symm-Run1 Res 4096
+*sort2d G0 G0 ge-asymm Res 4096 4096
+*sort3d_pair G0 G0 P0 Ge-pairs-R29-34 Res 4096 4096 96 STEP 128 128 4
+*time_reference L1 2000 0
+*move L 0 A 0
+*copy L A
+
+*gate A0 1336 1400 IN 1 1
+
+*mean A1 F0
+*add L1 F0 L1 Fact 1.000 -1.000 Off 2000
+
+*gate L1 10 7000 IN 1 2
+*gate L0 100 1250 IN 1 2
+
+*sort3d Li L0 L1 iL-ET-Ref0 Res 16 3072 4096 Step 2 128 128
+
+
+
+*stati
+
+*proje
+
+*recal L0  Cal/L-152Eu       0.00 1.00 10 4096 0 11
+*recal L1 Cal/L-Time10ps   300.00 0.50 20 7500 0 11
+*recal L1 Cal/L-Tshift       0.00 1.00 20 7500 0 11
+*time_reference G1 2000 0
+*move L 0  A 0
+*time_reference A1 2000 0
+
+*copy L0 L2
+*recal L2 Cal/WalkCorr      0.00 1.00  100 2000 0 11
+*add  L1 L2 L1 Fact 1.00 -1.00 Off 2000
+*gate L1 10 4080 IN 0 11
+
+*gate G1 100 3700 IN 1 8
+*gate L1 100 7800 IN 0 11
+
+*proje
+*sort3d_pair G0 G0 P0 Ge-pairs-R1 Res 4096 4096 96 STEP 128 128 4
+*gate A0 1590 1700 IN 1 1
+
+*sort2d_symm G0 Ge-symm-10um Res 8192
+*sort2d_symm L0 L-symm-Run06 Res 4096
+*sort3d Li L0 L1 iLa-E-T Res 16 8192 4096 Step 2 128 128
+*sort2d Gi G1 iGe-T-11 Res 16 2048 Step 4 128
+*sort2d G0 G1 Ge-ET Res 4096 4096 Step 128 128
