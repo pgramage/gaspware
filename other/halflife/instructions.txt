@@ -1,0 +1,5 @@
+1. Create peak-gated time spectra (gated.r4|r:4 or r2)
+2. Create background-gated time spectra(bg.r4|r:4)
+3. Create background subtracted (g315-final.r4|r:4)
+4. Run: errors - use normalization from width[step1]/width[step2]
+5. Run: halflife - use the .dat file produced by ‘errors’
